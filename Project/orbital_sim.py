@@ -3,13 +3,10 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from datetime import datetime, timedelta
 
-# ==========================================
-# 1. PHYSICS CONSTANTS & CONFIGURATION
-# ==========================================
+# PHYSICS CONSTANTS & CONFIGURATION
 AU = 1.496e8  # km (Astronomical Unit)
 MU_SUN = 1.327e11  # km^3/s^2 (Gravitational Parameter of Sun)
 
-# Planet Data (Simplified Circular Model)
 # Radius (km), Period (days), Distance from Sun (km)
 EARTH_DIST = 1.0 * AU
 MARS_DIST = 1.524 * AU
@@ -24,10 +21,7 @@ MOON_PERIOD = 27.3
 START_DATE = datetime(2020, 1, 1)
 END_DATE = datetime(2025, 12, 31)
 
-# ==========================================
-# 2. ORBITAL MECHANICS FUNCTIONS
-# ==========================================
-
+# ORBITAL MECHANICS FUNCTIONS
 def get_planet_pos(radius, period, t_days, phase_offset=0):
     """Calculates x, y position of a planet at time t."""
     # Mean motion (rad/day)
@@ -55,10 +49,7 @@ def solve_hohmann_transfer(r1, r2):
     
     return t_flight_days, required_phase
 
-# ==========================================
-# 3. OPTIMIZER (Find Best Launch Date)
-# ==========================================
-
+# OPTIMIZER (Find Best Launch Date)
 def optimize_launch_date():
     """Finds the date between 2020-2025 where Earth/Mars phase angle is optimal."""
     print("Optimizing Launch Window...")
@@ -93,10 +84,7 @@ def optimize_launch_date():
     print(f"Launch Day Index: {best_date_days}")
     return best_date_days
 
-# ==========================================
-# 4. SIMULATION & ANIMATION
-# ==========================================
-
+# SIMULATION & ANIMATION
 def run_simulation():
     # 1. Setup Optimization
     launch_day = optimize_launch_date()
